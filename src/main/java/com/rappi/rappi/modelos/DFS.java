@@ -14,10 +14,19 @@ public class DFS {
         visited.add(movie);
         System.out.println("Visiting: " + movie.getTitle());
         for (Person actor : movie.getActors()) {
-            // Asume que tienes una forma de obtener las películas en las que ha actuado el actor
-            for (Movie m : actor.getMovies()) {
+            for (Movie m : getMoviesActedIn(actor, visited)) {
                 ejecutarDFS(m);
             }
         }
+    }
+
+    private Set<Movie> getMoviesActedIn(Person actor, Set<Movie> allMovies) {
+        Set<Movie> moviesActedIn = new HashSet<>();
+        for (Movie movie : allMovies) {
+            if (movie.getActors().contains(actor)) {
+                moviesActedIn.add(movie);
+            }
+        }
+        return moviesActedIn;
     }
 }

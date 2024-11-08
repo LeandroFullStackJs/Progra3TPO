@@ -21,7 +21,7 @@ public class BFS {
             Movie current = queue.poll();
             System.out.println("Visiting: " + current.getTitle());
             for (Person actor : current.getActors()) {
-                for (Movie m : actor.getMovies()) {
+                for (Movie m : getMoviesActedIn(actor, visited)) {
                     if (!visited.contains(m)) {
                         queue.add(m);
                         visited.add(m);
@@ -29,5 +29,15 @@ public class BFS {
                 }
             }
         }
+    }
+
+    private Set<Movie> getMoviesActedIn(Person actor, Set<Movie> allMovies) {
+        Set<Movie> moviesActedIn = new HashSet<>();
+        for (Movie movie : allMovies) {
+            if (movie.getActors().contains(actor)) {
+                moviesActedIn.add(movie);
+            }
+        }
+        return moviesActedIn;
     }
 }

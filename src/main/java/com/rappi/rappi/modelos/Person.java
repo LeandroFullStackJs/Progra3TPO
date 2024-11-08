@@ -15,8 +15,8 @@ public class Person {
     private final String name;
     private final Integer born;
 
-    @Relationship(type = "ACTED_IN", direction = OUTGOING)
-    private Set<Movie> movies = new HashSet<>();
+    //@Relationship(type = "ACTED_IN", direction = OUTGOING)
+   // private Set<Movie> movies = new HashSet<>();
 
     public Person(Integer born, String name) {
         this.born = born;
@@ -36,11 +36,11 @@ public class Person {
         return born;
     }
 
-    public Set<Movie> getMovies() {
-        return movies;
-    }
+   // public Set<Movie> getMovies() {
+   //     return movies;
+   // }
 
-    public void setMovies(Set<Movie> movies) {
-        this.movies = movies;
-    }
+   // public void setMovies(Set<Movie> movies) {
+    //    this.movies = movies;
+   // }
 }
